@@ -11,8 +11,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        train_button.setOnClickListener{
-            Toast.makeText(applicationContext, "トーストメッセージ", Toast.LENGTH_LONG).show()
+        if (savedInstanceState == null) {
+            train_button.setOnClickListener {
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.addToBackStack(null)
+                transaction.replace(R.id.container, Test1.newInstance("Fragment"))
+                transaction.commit()
+            }
         }
     }
 }
