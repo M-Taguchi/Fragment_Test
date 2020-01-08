@@ -20,45 +20,43 @@
         app:layout_constraintVertical_bias="0.115" />
 
     <FrameLayout
+        android:id="@+id/container"
         android:layout_width="296dp"
         android:layout_height="169dp"
-        android:layout_marginTop="148dp"
-        android:id="@+id/container"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="308dp"
-        android:layout_height="130dp"
-        android:orientation="horizontal"
+        android:layout_marginBottom="76dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/train_button"
-            android:layout_width="107dp"
-            android:layout_height="wrap_content"
-            android:text="練習" />
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="308dp"
+            android:layout_height="68dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/walk_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="うろつき" />
+            <Button
+                android:id="@+id/train_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="練習" />
 
-        <Button
-            android:id="@+id/data_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="データ" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/walk_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="うろつき" />
+
+            <Button
+                android:id="@+id/data_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="データ" />
+        </LinearLayout>
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
