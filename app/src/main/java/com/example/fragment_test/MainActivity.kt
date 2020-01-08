@@ -3,7 +3,6 @@ package com.example.fragment_test
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
-import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,12 +11,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            train_button.setOnClickListener {
-                val transaction = supportFragmentManager.beginTransaction()
-                transaction.addToBackStack(null)
-                transaction.replace(R.id.container, Test1.newInstance("Fragment"))
-                transaction.commit()
-            }
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.add(R.id.container, Test1.newInstance("Fragment"))
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
     }
 }

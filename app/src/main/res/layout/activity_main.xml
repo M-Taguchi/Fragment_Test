@@ -29,33 +29,6 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="308dp"
-            android:layout_height="68dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/train_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="練習" />
-
-            <Button
-                android:id="@+id/walk_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="うろつき" />
-
-            <Button
-                android:id="@+id/data_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="データ" />
-        </LinearLayout>
     </FrameLayout>
 
 

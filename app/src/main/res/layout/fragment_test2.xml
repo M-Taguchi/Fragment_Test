@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Test1">
+    tools:context=".Test2">
 
     <!-- TODO: Update blank fragment layout -->
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,24 +14,24 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/train_button"
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="練習" />
+            android:text="Button" />
 
         <Button
-            android:id="@+id/walk_button"
+            android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="うろつき" />
+            android:text="Button" />
 
         <Button
-            android:id="@+id/data_button3"
+            android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="データ" />
+            android:text="Button" />
     </LinearLayout>
 </FrameLayout>
