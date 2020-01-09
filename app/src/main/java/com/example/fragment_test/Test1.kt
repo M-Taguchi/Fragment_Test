@@ -9,8 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_test1.*
 import android.widget.Toast
+import android.content.Intent
+import android.app.Activity
+import android.R.attr.data
+
+
+
+
 
 class Test1 : Fragment() {
+    var name : String? = "test"
+    val requestcode : Int = 110
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -21,27 +30,35 @@ class Test1 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val args = arguments
-        if (args != null) {
-            val str = args.getString("Message")
-        }
 
         train_button.setOnClickListener{
-            Toast.makeText(activity, "トーストメッセージ", Toast.LENGTH_LONG).show()
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             transaction?.addToBackStack(null)
-            transaction?.add(R.id.container, Test2.newInstance("Fragment2"))
+            transaction?.add(R.id.container, Test2.newInstance(this, requestcode))
             transaction?.commit()
+        }
+        data_button.setOnClickListener{
+            Toast.makeText(activity, name, Toast.LENGTH_LONG).show()
         }
     }
     companion object {
         @JvmStatic
-        fun newInstance(str: String) : Test1 =
+        fun newInstance() : Test1 =
             Test1().apply {
-                arguments = Bundle().apply {
-                    putString("Message", str)
-                }
             }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            requestcode -> {
+                if (resultCode != Activity.RESULT_OK) {
+                    return
+                }
+                name = data?.getStringExtra(Intent.EXTRA_TEXT)
+                return
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
 }

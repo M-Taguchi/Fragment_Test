@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             val transaction = supportFragmentManager.beginTransaction()
-            transaction.add(R.id.container, Test1.newInstance("Fragment"))
+            transaction.add(R.id.container, Test1.newInstance())
             transaction.addToBackStack(null)
             transaction.commit()
         }

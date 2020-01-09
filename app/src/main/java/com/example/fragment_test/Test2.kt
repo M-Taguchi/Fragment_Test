@@ -8,6 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_test2.*
+import android.app.Activity
+import android.content.Intent
+import android.widget.Toast
+
 
 class Test2 : Fragment() {
     override fun onCreateView(
@@ -20,19 +24,32 @@ class Test2 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val args = arguments
-        if (args != null) {
-            val str = args.getString("Message")
+
+        return_button.setOnClickListener{
+            submit("aaa")
+            val fragmentManager = fragmentManager
+            fragmentManager?.popBackStack()
         }
+
     }
     companion object {
         @JvmStatic
-        fun newInstance(str: String) : Test2 =
-            Test2()?.apply {
-                arguments = Bundle().apply {
-                    putString("Message", str)
-                }
+        fun newInstance(target: Fragment?, requestCode: Int) : Test2 =
+            Test2().apply {
+                this.setTargetFragment(target, requestCode)
+
+                val args = Bundle()
+                this.setArguments(args)
             }
+    }
+
+    fun submit(inputText: String) {
+        val target = this.getTargetFragment()
+
+        val data = Intent()
+        data.putExtra(Intent.EXTRA_TEXT, inputText)
+        //Toast.makeText(activity, Integer.toString(targetRequestCode), Toast.LENGTH_LONG).show()
+        target?.onActivityResult(targetRequestCode, Activity.RESULT_OK, data)
     }
 
 }
