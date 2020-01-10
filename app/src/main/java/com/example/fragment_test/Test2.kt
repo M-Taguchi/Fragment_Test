@@ -26,8 +26,10 @@ class Test2 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         return_button.setOnClickListener{
-            submit("aaa")
-            val fragmentManager = fragmentManager
+            fragmentManager?.popBackStack()
+        }
+        button2.setOnClickListener{
+            submit(intArrayOf(-20, 15, 0, 3, -1, 0))
             fragmentManager?.popBackStack()
         }
 
@@ -43,11 +45,11 @@ class Test2 : Fragment() {
             }
     }
 
-    fun submit(inputText: String) {
+    fun submit(result: IntArray) {
         val target = this.getTargetFragment()
 
         val data = Intent()
-        data.putExtra(Intent.EXTRA_TEXT, inputText)
+        data.putExtra(Intent.EXTRA_TEXT, result)
         //Toast.makeText(activity, Integer.toString(targetRequestCode), Toast.LENGTH_LONG).show()
         target?.onActivityResult(targetRequestCode, Activity.RESULT_OK, data)
     }
