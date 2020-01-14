@@ -11,32 +11,14 @@ import kotlinx.android.synthetic.main.fragment_test1.*
 import android.widget.Toast
 import android.content.Intent
 import android.app.Activity
-import android.R.attr.data
-import android.os.Parcel
-import android.os.Parcelable
+import java.io.Serializable
 
-class Hero {
-    var max_stamina : Int = 100
-    var stamina : Int = 100
-    var power : Int = 0
-    var speed : Int = 0
-    var tech : Int = 0
-    var breaking : Int = 0
-    var mental : Int = 0
 
-    constructor(max_stamina: Int, stamina: Int, power: Int, speed: Int, tech: Int, breaking: Int, mental: Int) {
-        this.max_stamina = max_stamina
-        this.stamina = stamina
-        this.power = power
-        this.speed = speed
-        this.tech = tech
-        this.breaking = breaking
-        this.mental = mental
-    }
-}
 
 class Test1 : Fragment() {
-    val pawapuro = Hero( 100,100, 0, 0, 0, 0, 0)
+    //val pawapuro = Hero( 100,100, 0, 0, 0, 0, 0)
+    var bundle: Bundle? = arguments
+    var pawapuro: Hero = bundle!!.getSerializable("pawapuro") as Hero
     var result : IntArray = intArrayOf(0, 0, 0, 0 , 0, 0)
     val requestcode : Int = 110
     override fun onCreateView(
@@ -67,8 +49,11 @@ class Test1 : Fragment() {
     }
     companion object {
         @JvmStatic
-        fun newInstance() : Test1 =
+        fun newInstance(pawapuro: Hero) : Test1 =
             Test1().apply {
+                arguments = Bundle().apply {
+                    putSerializable("pawapuro", pawapuro)
+                }
             }
     }
 
