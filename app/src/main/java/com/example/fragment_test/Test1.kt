@@ -84,6 +84,10 @@ class Test1 : Fragment() {
 
                 result_reflect(pawapuro, result)
 
+                val activity = activity as MainActivity?
+
+                activity?.setparam(pawapuro)
+
                 return
             }
         }
