@@ -7,6 +7,7 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.Serializable
 
+//これがパワプロ君
 class Hero: Serializable {
     var max_stamina: Int = 100
     var stamina: Int = 100
@@ -52,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         calendarView.setText(calendar[0].toString() + "月" + calendar[1].toString() + "週")
     }
 
+    //fragmentから
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (requestCode) {
             requestcode -> {
@@ -70,6 +72,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //得られた結果を反映する
     fun setparam(pawapuro: Hero){
         progressBar.max = pawapuro.max_stamina
         progressBar.progress = pawapuro.stamina

@@ -13,7 +13,7 @@ import android.content.Intent
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_data_fragment.*
 
-
+//パワプロ君のデータを見るクラス
 class data_fragment: Fragment() {
 
     var pawapuro : Hero = Hero()

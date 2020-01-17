@@ -14,7 +14,7 @@ import android.app.Activity
 import java.io.Serializable
 
 
-
+//行動選択をまとめたクラス
 class Test1: Fragment() {
     //val pawapuro = Hero( 100,100, 0, 0, 0, 0, 0)
     var pawapuro: Hero = Hero()
@@ -61,6 +61,7 @@ class Test1: Fragment() {
             }
     }
 
+    //練習の結果をMainActivityに反映させる
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (requestCode) {
             requestcode -> {
@@ -74,7 +75,7 @@ class Test1: Fragment() {
                 result_reflect(pawapuro, result)
 
                 val activity = activity as MainActivity?
-
+                //ここでMainActivityに反映
                 activity?.setparam(pawapuro)
 
                 return
@@ -83,6 +84,7 @@ class Test1: Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    //結果を取得
     fun result_reflect(pawapuro: Hero, result: IntArray){
         pawapuro.stamina += result[0]
         pawapuro.power += result[1]

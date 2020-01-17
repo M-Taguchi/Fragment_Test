@@ -13,7 +13,7 @@ import android.content.Intent
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_test1.*
 
-
+//練習内容をまとめたクラス
 class Test2: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,14 +23,19 @@ class Test2: Fragment() {
         return inflater.inflate(R.layout.fragment_test2, container, false)
     }
 
+    //ここから処理を開始
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         train_image.visibility = View.INVISIBLE
 
+        //戻るボタンを押したとき
         return_button.setOnClickListener{
             fragmentManager?.popBackStack()
         }
+
+        //練習1のボタンを押したとき(トス)
         button2.setOnClickListener{
             submit(intArrayOf(-20, 15, 0, 3, -1, 0))
             fragmentManager?.popBackStack()
@@ -45,6 +50,8 @@ class Test2: Fragment() {
             train_image.visibility = View.VISIBLE
             true
         }
+
+        //練習2のボタンを押したとき(ノック)
         button3.setOnClickListener{
             submit(intArrayOf(-15, 0, 15, 3, -1, 3))
             fragmentManager?.popBackStack()
@@ -60,6 +67,8 @@ class Test2: Fragment() {
             true
         }
     }
+
+    //fragmentのインスタンス生成時に呼ばれる
     companion object {
         @JvmStatic
         fun newInstance(target: Fragment?, requestCode: Int) : Test2 =
@@ -71,6 +80,7 @@ class Test2: Fragment() {
             }
     }
 
+    //練習の結果をfragment1に結果を返す
     fun submit(result: IntArray) {
         val target = this.getTargetFragment()
 
