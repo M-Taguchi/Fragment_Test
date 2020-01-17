@@ -14,9 +14,9 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_data_fragment.*
 
 
-class data_fragment : Fragment() {
+class data_fragment: Fragment() {
 
-    var pawapuro: Hero = Hero()
+    var pawapuro : Hero = Hero()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +39,7 @@ class data_fragment : Fragment() {
     }
     companion object {
         @JvmStatic
-        fun newInstance(pawapuro : Hero) : data_fragment =
+        fun newInstance(pawapuro: Hero) : data_fragment =
             data_fragment().apply {
                 arguments = Bundle().apply {
                     putSerializable("pawapuro", pawapuro)

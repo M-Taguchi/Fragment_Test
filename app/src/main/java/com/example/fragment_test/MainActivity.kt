@@ -7,14 +7,14 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.Serializable
 
-class Hero : Serializable {
-    var max_stamina : Int = 100
-    var stamina : Int = 100
-    var power : Int = 0
-    var speed : Int = 0
-    var tech : Int = 0
-    var breaking : Int = 0
-    var mental : Int = 0
+class Hero: Serializable {
+    var max_stamina: Int = 100
+    var stamina: Int = 100
+    var power: Int = 0
+    var speed: Int = 0
+    var tech: Int = 0
+    var breaking: Int = 0
+    var mental: Int = 0
 
 
 //    constructor(max_stamina: Int, stamina: Int, power: Int, speed: Int, tech: Int, breaking: Int, mental: Int) {
@@ -30,8 +30,11 @@ class Hero : Serializable {
 
 class MainActivity : AppCompatActivity() {
 
-    val requestcode : Int = 111
-    val pawapuro : Hero = Hero()
+    var turn: Int = 0
+    var calendar: IntArray = intArrayOf(4, 1)
+
+    val requestcode: Int = 111
+    val pawapuro: Hero = Hero()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         stamina_bar.setText("体力")
         progressBar.max = 100
         progressBar.progress = 100
+        calendarView.setText(calendar[0].toString() + "月" + calendar[1].toString() + "週")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -66,9 +70,21 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun setparam(pawapuro : Hero){
+    fun setparam(pawapuro: Hero){
         progressBar.max = pawapuro.max_stamina
         progressBar.progress = pawapuro.stamina
+
+        turn++
+        calendar[1] += 1
+        if (calendar[1] == 5){
+            calendar[0] += 1
+            calendar[1] = 1
+        }
+        if (calendar[0] == 13){
+            calendar[0] = 1
+        }
+
+        calendarView.setText(calendar[0].toString() + "月" + calendar[1].toString() + "週")
 
         return
     }

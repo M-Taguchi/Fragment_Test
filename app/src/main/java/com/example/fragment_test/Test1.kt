@@ -15,13 +15,13 @@ import java.io.Serializable
 
 
 
-class Test1 : Fragment() {
+class Test1: Fragment() {
     //val pawapuro = Hero( 100,100, 0, 0, 0, 0, 0)
     var pawapuro: Hero = Hero()
 
     //var pawapuro: Hero = Hero( 100,100, 0, 0, 0, 0, 0)
-    var result : IntArray = intArrayOf(0, 0, 0, 0 , 0, 0)
-    val requestcode : Int = 110
+    var result: IntArray = intArrayOf(0, 0, 0, 0 , 0, 0)
+    val requestcode: Int = 110
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,7 +33,7 @@ class Test1 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val bundle: Bundle? = arguments
+        val bundle : Bundle? = arguments
         pawapuro = bundle!!.getSerializable("pawapuro") as Hero
 
         train_button.setOnClickListener{
@@ -83,7 +83,7 @@ class Test1 : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    fun result_reflect(pawapuro : Hero, result : IntArray){
+    fun result_reflect(pawapuro: Hero, result: IntArray){
         pawapuro.stamina += result[0]
         pawapuro.power += result[1]
         pawapuro.speed += result[2]

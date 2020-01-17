@@ -11,9 +11,10 @@ import kotlinx.android.synthetic.main.fragment_test2.*
 import android.app.Activity
 import android.content.Intent
 import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_test1.*
 
 
-class Test2 : Fragment() {
+class Test2: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +33,26 @@ class Test2 : Fragment() {
             submit(intArrayOf(-20, 15, 0, 3, -1, 0))
             fragmentManager?.popBackStack()
         }
-
+        button2.setOnLongClickListener{
+            train_name.setText("トスバッティング")
+            result_1.setText("筋力　　+15")
+            result_2.setText("技術　　+3")
+            result_3.setText("変化　　-1")
+            result_4.setText("怪我率　0%")
+            true
+        }
+        button3.setOnClickListener{
+            submit(intArrayOf(-15, 0, 15, 3, -1, 3))
+            fragmentManager?.popBackStack()
+        }
+        button3.setOnLongClickListener{
+            train_name.setText("ノック")
+            result_1.setText("敏捷　　+15")
+            result_2.setText("技術　　+3")
+            result_3.setText("変化　　-1")
+            result_4.setText("怪我率　0%")
+            true
+        }
     }
     companion object {
         @JvmStatic
