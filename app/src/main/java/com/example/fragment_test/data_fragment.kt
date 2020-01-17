@@ -15,6 +15,9 @@ import kotlinx.android.synthetic.main.fragment_data_fragment.*
 
 
 class data_fragment : Fragment() {
+
+    var pawapuro: Hero = Hero()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,24 +29,20 @@ class data_fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val bundle = arguments
-        stamina.text = "体力　" + bundle?.getInt("stamina").toString()
-        power.text = "筋力　" +  bundle?.getInt("power").toString()
-        speed.text = "敏捷　" +  bundle?.getInt("speed").toString()
-        tech.text = "技術　" +  bundle?.getInt("tech").toString()
-        breaking.text = "変化　" +  bundle?.getInt("breaking").toString()
-        mental.text = "精神　" +  bundle?.getInt("mental").toString()
+        pawapuro = bundle!!.getSerializable("pawapuro") as Hero
+        stamina.text = "体力　" + pawapuro.stamina.toString()
+        power.text = "筋力　" +  pawapuro.power.toString()
+        speed.text = "敏捷　" +  pawapuro.speed.toString()
+        tech.text = "技術　" +  pawapuro.tech.toString()
+        breaking.text = "変化　" +  pawapuro.breaking.toString()
+        mental.text = "精神　" +  pawapuro.mental.toString()
     }
     companion object {
         @JvmStatic
         fun newInstance(pawapuro : Hero) : data_fragment =
             data_fragment().apply {
                 arguments = Bundle().apply {
-                    putInt("stamina", pawapuro.stamina)
-                    putInt("power", pawapuro.power)
-                    putInt("speed", pawapuro.speed)
-                    putInt("tech", pawapuro.tech)
-                    putInt("breaking", pawapuro.breaking)
-                    putInt("mental", pawapuro.mental)
+                    putSerializable("pawapuro", pawapuro)
                 }
             }
     }

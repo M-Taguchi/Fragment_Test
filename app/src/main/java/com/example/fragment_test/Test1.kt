@@ -17,8 +17,9 @@ import java.io.Serializable
 
 class Test1 : Fragment() {
     //val pawapuro = Hero( 100,100, 0, 0, 0, 0, 0)
-    var bundle: Bundle? = arguments
-    var pawapuro: Hero = bundle!!.getSerializable("pawapuro") as Hero
+    var pawapuro: Hero = Hero()
+
+    //var pawapuro: Hero = Hero( 100,100, 0, 0, 0, 0, 0)
     var result : IntArray = intArrayOf(0, 0, 0, 0 , 0, 0)
     val requestcode : Int = 110
     override fun onCreateView(
@@ -31,6 +32,9 @@ class Test1 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val bundle: Bundle? = arguments
+        pawapuro = bundle!!.getSerializable("pawapuro") as Hero
 
         train_button.setOnClickListener{
             val transaction = activity?.supportFragmentManager?.beginTransaction()

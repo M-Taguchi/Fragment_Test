@@ -16,21 +16,22 @@ class Hero : Serializable {
     var breaking : Int = 0
     var mental : Int = 0
 
-    constructor(max_stamina: Int, stamina: Int, power: Int, speed: Int, tech: Int, breaking: Int, mental: Int) {
-        this.max_stamina = max_stamina
-        this.stamina = stamina
-        this.power = power
-        this.speed = speed
-        this.tech = tech
-        this.breaking = breaking
-        this.mental = mental
-    }
+
+//    constructor(max_stamina: Int, stamina: Int, power: Int, speed: Int, tech: Int, breaking: Int, mental: Int) {
+//        this.max_stamina = max_stamina
+//        this.stamina = stamina
+//        this.power = power
+//        this.speed = speed
+//        this.tech = tech
+//        this.breaking = breaking
+//        this.mental = mental
+//    }
 }
 
 class MainActivity : AppCompatActivity() {
 
     val requestcode : Int = 111
-    val pawapuro : Hero = Hero( 100,100, 0, 0, 0, 0, 0)
+    val pawapuro : Hero = Hero()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
