@@ -26,6 +26,8 @@ class Test2: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        train_image.visibility = View.INVISIBLE
+
         return_button.setOnClickListener{
             fragmentManager?.popBackStack()
         }
@@ -39,6 +41,8 @@ class Test2: Fragment() {
             result_2.setText("技術　　+3")
             result_3.setText("変化　　-1")
             result_4.setText("怪我率　0%")
+            train_image.setImageResource(R.drawable.baseball_batter_man)
+            train_image.visibility = View.VISIBLE
             true
         }
         button3.setOnClickListener{
@@ -51,6 +55,8 @@ class Test2: Fragment() {
             result_2.setText("技術　　+3")
             result_3.setText("変化　　-1")
             result_4.setText("怪我率　0%")
+            train_image.setImageResource(R.drawable.baseball_goro)
+            train_image.visibility = View.VISIBLE
             true
         }
     }
