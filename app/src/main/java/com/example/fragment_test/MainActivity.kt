@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             val transaction = supportFragmentManager.beginTransaction()
             transaction.add(R.id.container, Test1.newInstance(pawapuro))
-            //transaction.addToBackStack(null)
+            transaction.addToBackStack(null)
             transaction.commit()
         }
         stamina_bar.setText("体力")

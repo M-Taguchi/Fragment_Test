@@ -27,7 +27,6 @@ class Test2: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         train_image.visibility = View.INVISIBLE
 
         //戻るボタンを押したとき

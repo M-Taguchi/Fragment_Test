@@ -12,6 +12,7 @@ import android.widget.Toast
 import android.content.Intent
 import android.app.Activity
 import java.io.Serializable
+import android.view.KeyEvent
 
 
 //行動選択をまとめたクラス
@@ -50,6 +51,22 @@ class Test1: Fragment() {
             //val test = pawapuro.stamina
             //Toast.makeText(activity, test.toString(), Toast.LENGTH_LONG).show()
         }
+        walk_button.setOnClickListener {
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.addToBackStack(null)
+            transaction?.replace(R.id.container, ChatFragment.newInstance())
+            transaction?.commit()
+        }
+
+        view.setOnKeyListener { v, keyCode, event ->
+            (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN).apply {
+                // as you like :)
+            }
+        }
+        view.setFocusableInTouchMode(true)
+        view.requestFocus()
+
+
     }
     companion object {
         @JvmStatic
