@@ -9,8 +9,8 @@
 
     <FrameLayout
         android:id="@+id/container"
-        android:layout_width="390dp"
-        android:layout_height="338dp"
+        android:layout_width="393dp"
+        android:layout_height="397dp"
         android:layout_marginBottom="76dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,8 +21,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="219dp"
-        android:layout_height="162dp"
+        android:layout_width="214dp"
+        android:layout_height="122dp"
         android:layout_marginEnd="2dp"
         android:layout_marginRight="2dp"
         android:orientation="horizontal"
@@ -42,8 +42,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:text="TextView" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -56,8 +56,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="122dp"
-        android:layout_height="157dp"
+        android:layout_width="120dp"
+        android:layout_height="116dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
