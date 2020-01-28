@@ -32,6 +32,17 @@ class ChatFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //val bundle = arguments
 
+        //戻るボタン無効化
+        view.setOnKeyListener { v, keyCode, event ->
+            (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN).apply {
+                // as you like :)
+                //fragmentManager?.popBackStack()
+            }
+        }
+        view.setFocusable(true);
+        view.setFocusableInTouchMode(true)
+        view.requestFocus()
+
         //画面タップでページ送り
         view.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(v: View, event: MotionEvent): Boolean {
@@ -43,24 +54,28 @@ class ChatFragment: Fragment() {
                 return true
             }
         })
-//        view.setOnKeyListener { v, keyCode, event ->
-//            (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN).apply {
-//
-//                textView.setText("次ページ")
-//                // as you like :)
-//                //fragmentManager?.popBackStack()
-//            }
-//        }
-//        view.setFocusable(true);
-//        view.setFocusableInTouchMode(true)
-//        view.requestFocus()
+
+        submit(intArrayOf(-5, 1, 1, 1, 1, 1))
+        fragmentManager?.popBackStack()
 
     }
     companion object {
         @JvmStatic
-        fun newInstance() : ChatFragment =
+        fun newInstance(target: Fragment?, requestCode: Int) : ChatFragment =
             ChatFragment().apply {
+                this.setTargetFragment(target, requestCode)
+
+                val args = Bundle()
+                this.setArguments(args)
             }
+    }
+    fun submit(result: IntArray) {
+        val target = this.getTargetFragment()
+
+        val data = Intent()
+        data.putExtra(Intent.EXTRA_TEXT, result)
+        //Toast.makeText(activity, Integer.toString(targetRequestCode), Toast.LENGTH_LONG).show()
+        target?.onActivityResult(targetRequestCode, Activity.RESULT_OK, data)
     }
 
 }

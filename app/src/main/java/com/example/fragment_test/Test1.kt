@@ -26,6 +26,8 @@ class Test1: Fragment() {
     //var pawapuro: Hero = Hero( 100,100, 0, 0, 0, 0, 0)
     var result: IntArray = intArrayOf(0, 0, 0, 0 , 0, 0)
     val requestcode: Int = 110
+    val request_code_pre_event = 112
+    val request_code_after_event = 113
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,7 +59,7 @@ class Test1: Fragment() {
         walk_button.setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             transaction?.addToBackStack(null)
-            transaction?.replace(R.id.container, ChatFragment.newInstance())
+            transaction?.replace(R.id.container, ChatFragment.newInstance(this, request_code_pre_event))
             transaction?.commit()
         }
 
@@ -98,34 +100,59 @@ class Test1: Fragment() {
                 //ここでMainActivityに反映
                 activity?.setparam(pawapuro)
 
-                runBlocking {
-                    //後イベ発生
-                    var after_event = true
-                    if (after_event == true) {
-                        GlobalScope.async() {
-                            val transaction = activity?.supportFragmentManager?.beginTransaction()
-                            transaction?.addToBackStack(null)
-                            transaction?.replace(R.id.container, ChatFragment.newInstance())
-                            transaction?.commit()
-                        }.await()
-                    }
-
+                //後イベ発生
+                var after_event = true
+                if (after_event == true) {
+                    val transaction = activity?.supportFragmentManager?.beginTransaction()
+                    transaction?.addToBackStack(null)
+                    transaction?.replace(R.id.container, ChatFragment.newInstance(this, request_code_after_event))
+                    transaction?.commit()
+                }else{
                     activity!!.turn++
                     activity.go_calendar()
 
                     //前イベ発生
                     var pre_event = true
                     if (pre_event == true) {
-                        GlobalScope.async() {
-                            val transaction = activity?.supportFragmentManager?.beginTransaction()
-                            transaction?.addToBackStack(null)
-                            transaction?.replace(R.id.container, ChatFragment.newInstance())
-                            transaction?.commit()
-                        }
+                        val transaction = activity?.supportFragmentManager?.beginTransaction()
+                        transaction?.addToBackStack(null)
+                        transaction?.replace(R.id.container, ChatFragment.newInstance(this, request_code_pre_event))
+                        transaction?.commit()
                     }
                 }
-
                 return
+            }
+            request_code_pre_event -> {
+                if (resultCode != Activity.RESULT_OK) {
+                    return
+                }
+
+                result = data!!.getIntArrayExtra(Intent.EXTRA_TEXT)
+
+                result_reflect(pawapuro, result)
+            }
+            request_code_after_event -> {
+                if (resultCode != Activity.RESULT_OK) {
+                    return
+                }
+
+                result = data!!.getIntArrayExtra(Intent.EXTRA_TEXT)
+
+                result_reflect(pawapuro, result)
+
+                val activity = activity as MainActivity?
+
+                activity!!.turn++
+                activity.go_calendar()
+
+                //前イベ発生
+                var pre_event = true
+                if (pre_event == true) {
+                    val transaction = activity?.supportFragmentManager?.beginTransaction()
+                    transaction?.addToBackStack(null)
+                    transaction?.replace(R.id.container, ChatFragment.newInstance(this, request_code_pre_event))
+                    transaction?.commit()
+                }
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
