@@ -13,6 +13,9 @@ import android.content.Intent
 import android.app.Activity
 import java.io.Serializable
 import android.view.KeyEvent
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 
 
 //行動選択をまとめたクラス
@@ -94,6 +97,33 @@ class Test1: Fragment() {
                 val activity = activity as MainActivity?
                 //ここでMainActivityに反映
                 activity?.setparam(pawapuro)
+
+                runBlocking {
+                    //後イベ発生
+                    var after_event = true
+                    if (after_event == true) {
+                        GlobalScope.async() {
+                            val transaction = activity?.supportFragmentManager?.beginTransaction()
+                            transaction?.addToBackStack(null)
+                            transaction?.replace(R.id.container, ChatFragment.newInstance())
+                            transaction?.commit()
+                        }.await()
+                    }
+
+                    activity!!.turn++
+                    activity.go_calendar()
+
+                    //前イベ発生
+                    var pre_event = true
+                    if (pre_event == true) {
+                        GlobalScope.async() {
+                            val transaction = activity?.supportFragmentManager?.beginTransaction()
+                            transaction?.addToBackStack(null)
+                            transaction?.replace(R.id.container, ChatFragment.newInstance())
+                            transaction?.commit()
+                        }
+                    }
+                }
 
                 return
             }

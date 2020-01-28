@@ -4,15 +4,18 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_test2.*
 import android.app.Activity
 import android.content.Intent
-import android.view.KeyEvent
+import android.text.method.Touch.onTouchEvent
+import android.view.*
 import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_chat.*
 import kotlinx.android.synthetic.main.fragment_data_fragment.*
+import android.view.MotionEvent
+import android.view.View.OnTouchListener
+
+
 
 //パワプロ君のデータを見るクラス
 class ChatFragment: Fragment() {
@@ -29,15 +32,28 @@ class ChatFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //val bundle = arguments
 
+        //画面タップでページ送り
+        view.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View, event: MotionEvent): Boolean {
 
-        view.setOnKeyListener { v, keyCode, event ->
-            (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN).apply {
-                // as you like :)
-                //fragmentManager?.popBackStack()
+                if (event.action == MotionEvent.ACTION_UP) {
+                    //do something
+                    textView.setText("次ページ")
+                }
+                return true
             }
-        }
-        view.setFocusableInTouchMode(true)
-        view.requestFocus()
+        })
+//        view.setOnKeyListener { v, keyCode, event ->
+//            (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN).apply {
+//
+//                textView.setText("次ページ")
+//                // as you like :)
+//                //fragmentManager?.popBackStack()
+//            }
+//        }
+//        view.setFocusable(true);
+//        view.setFocusableInTouchMode(true)
+//        view.requestFocus()
 
     }
     companion object {

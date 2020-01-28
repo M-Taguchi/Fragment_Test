@@ -77,7 +77,10 @@ class MainActivity : AppCompatActivity() {
         progressBar.max = pawapuro.max_stamina
         progressBar.progress = pawapuro.stamina
 
-        turn++
+        return
+    }
+
+    fun go_calendar(){
         calendar[1] += 1
         if (calendar[1] == 5){
             calendar[0] += 1
@@ -88,8 +91,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         calendarView.setText(calendar[0].toString() + "月" + calendar[1].toString() + "週")
-
-        return
     }
 
 }
