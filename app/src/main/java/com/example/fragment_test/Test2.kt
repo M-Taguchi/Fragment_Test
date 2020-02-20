@@ -36,8 +36,8 @@ class Test2: Fragment() {
 
         //練習1のボタンを押したとき(トス)
         button2.setOnClickListener{
-            submit(intArrayOf(-20, 15, 0, 3, -1, 0))
             fragmentManager?.popBackStack()
+            submit(intArrayOf(-20, 15, 0, 3, -1, 0))
         }
         button2.setOnLongClickListener{
             train_name.setText("トスバッティング")
@@ -52,8 +52,8 @@ class Test2: Fragment() {
 
         //練習2のボタンを押したとき(ノック)
         button3.setOnClickListener{
-            submit(intArrayOf(-15, 0, 15, 3, -1, 3))
             fragmentManager?.popBackStack()
+            submit(intArrayOf(-15, 0, 15, 3, -1, 3))
         }
         button3.setOnLongClickListener{
             train_name.setText("ノック")
@@ -79,7 +79,7 @@ class Test2: Fragment() {
             }
     }
 
-    //練習の結果をfragment1に結果を返す
+    //練習の結果をfragment1に返す
     fun submit(result: IntArray) {
         val target = this.getTargetFragment()
 

@@ -90,7 +90,6 @@ class Test1: Fragment() {
                 if (resultCode != Activity.RESULT_OK) {
                     return
                 }
-                //Toast.makeText(activity, "test", Toast.LENGTH_LONG).show()
                 //Thread.sleep(10000)
                 result = data!!.getIntArrayExtra(Intent.EXTRA_TEXT)
 
@@ -103,6 +102,7 @@ class Test1: Fragment() {
                 //後イベ発生
                 var after_event = true
                 if (after_event == true) {
+                    //Toast.makeText(activity, "test", Toast.LENGTH_LONG).show()
                     val transaction = activity?.supportFragmentManager?.beginTransaction()
                     transaction?.addToBackStack(null)
                     transaction?.replace(R.id.container, ChatFragment.newInstance(this, request_code_after_event))
@@ -130,6 +130,8 @@ class Test1: Fragment() {
                 result = data!!.getIntArrayExtra(Intent.EXTRA_TEXT)
 
                 result_reflect(pawapuro, result)
+                val activity = activity as MainActivity?
+                activity?.setparam(pawapuro)
             }
             request_code_after_event -> {
                 if (resultCode != Activity.RESULT_OK) {
@@ -141,12 +143,13 @@ class Test1: Fragment() {
                 result_reflect(pawapuro, result)
 
                 val activity = activity as MainActivity?
-
+                activity?.setparam(pawapuro)
                 activity!!.turn++
                 activity.go_calendar()
 
+
                 //前イベ発生
-                var pre_event = true
+                val pre_event = true
                 if (pre_event == true) {
                     val transaction = activity?.supportFragmentManager?.beginTransaction()
                     transaction?.addToBackStack(null)

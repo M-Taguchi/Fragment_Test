@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="363dp"
-        android:layout_height="203dp"
+        android:layout_width="356dp"
+        android:layout_height="245dp"
         android:background="@drawable/balloon_left"
         android:text="Hello"
         app:layout_constraintEnd_toEndOf="parent"
